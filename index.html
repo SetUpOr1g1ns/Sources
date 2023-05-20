@@ -12,69 +12,114 @@
                 width: 100%;
                 line-height:3;
             }
-            .hiddenText {
+            .fade-down {
                 opacity: 0;
+                transform: translateY(-20px);
                 transition: opacity 0.5s, transform 0.5s;
             }
-            .reveal {
+            .show {
                 opacity: 1;
-                transform: translateY(20px);
-            }
-            .slider {
-                text-align: center;
-            }
-            .img2 { 
-                position: absolute; 
-                left: 28%; 
-                top: 30%;
-                border-top:5px solid black;
-                border-right:5px solid rgb(114, 109, 109);
-                border-bottom:5px solid rgb(114, 109, 109);
-                border-left:5px solid black;
+                transform: translateY(0);
             }
             body {
                 background-image: url('fondo.jpeg');
             }
+            .container {
+                text-align: center;
+            }
+            .container p {
+                text-align: center;
+                position: absolute;
+                top: 90%;
+            }
+            @keyframes fadeInScale {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .fade-container {
+                opacity: 0;
+                animation: fadeInScale 1s ease-in-out forwards;
+            }
+            .fade-container2 {
+                opacity: 0;
+                animation: fadeInScale 5s ease-in-out forwards;
+            }
         </style>
+
         <title>SetUpOr1g1n's Podcast's Report</title>
-        <div class="header">
-            <h1 style="font-family:courier;font-size:500%;", align="center"> <pre><strong><ins>SetUpOr1g1n's Podcast's Report</ins></strong></pre></h1>
-        </div>
-    </head>
-    <body>
-        <div class="slider">
-            <img style="position: absolute; height: 300px; width: 500px; left: 5%; top: 40%;opacity: 0.5;" src="video.png">
-            <img style="position: absolute; height: 300px; width: 500px; left: 65%; top: 40%;opacity: 0.5;" src="video.png">
-            <div class="img2">
-                <img style="height: 450px; width: 700px; "id="sliderImage" src="image1.jpg" alt="Slider Image">
+        
+        <div class="fade-container">
+            <div class="header">
+                <h1 style="font-family:courier;font-size:500%;", align="center"> <pre><strong><ins>SetUpOr1g1n's Podcast's Report</ins></strong></pre></h1>
             </div>
-            <button style="height: 50px; width: 100px; position: absolute; left: 20%; top:55%; border-radius: 12px;", onclick="previousImage()">Previous</button>
-            <button style="height: 50px; width: 100px; position: absolute; left: 75%; top:55%; border-radius: 12px;", onclick="nextImage()">Next</button>
         </div>
-        <button style="height: 80px; width: 400px; position: absolute; left: 38%; top: 85%; border-radius: 12px;", onclick="revealText()"><strong style="font-size:200%;">Mostrar reporte del video</strong></button>
-        <p style="position: absolute; left: 35%; top: 95%;" class="hiddenText">
-            Alemania y Francia han sido durante años los que indirectamente controlaban la UE.<br>
-            Ya que su población suponía más de la mitad de toda la UE y su economías las más <br>
-            grandes de toda la UE. Sin embargo Alemania ha estado perdiendo influencia por su <br>
-            falta de reacción por la invasión rusa de Ucrania. Polonia ha aprovechado esto para <br>
-            aumentar su influencia en la organización. <br>
-            <strong>¿Conseguirá Polonia sustituir políticamente a Alemania, o seguirá irrelevante?</strong></p>
+
+    </head>
+
+
+    <body>
+        <div class="fade-container2">
+            <img style="position: absolute; height: 300px; width: 500px; left: 5vh; top: 40vh; opacity: 0.5; border: 5px solid #230338;box-shadow: 10px 10px grey;" src="video.png">
+            <img style="position: absolute; height: 300px; width: 500px; left: 65%; top: 40%; opacity: 0.5; border: 5px solid #230338;box-shadow: 10px 10px grey;" src="video.png">
+            <img style="position: absolute; left: 53vh;top: 29vh; height: 450px; width: 700px; border: 5px solid #0d0808; box-shadow: 10px 10px;" id="sliderImage" src="image1.jpg" alt="Nada aún">
+            <button id="buttonA" style="position: absolute; top: 55vh; left: 15vw; height: 50px; width: 150px; border-radius: 12px; box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.803);"><strong>Reporte Previo</strong></button>
+            <button id="buttonB" style="position: absolute; top: 55vh; left: 74vw; height: 50px; width: 150px; border-radius: 12px; box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.803);"><strong>Reporte Posterior</strong></button>
+
+            <div class="container">
+                <strong><p id="text" class="fade-down">Initial text</p></strong>
+                <p style="position: absolute; left: 40%; top: 98%;"><strong><ins>Examina mi reporte haciendo</ins></strong> <a href="¿Será Polonia la nueva guía de la UE_.pdf">click aquí</a></p>
+            </div>
+        </div>
+
         <script>
+            var textArray = ["Alemania y Francia han sido durante años los que indirectamente controlaban la UE. Ya que su población suponía más de la mitad de toda la UE y su economías las más grandes de toda la UE. Sin embargo Alemania ha estado perdiendo influencia por su falta de reacción por la invasión rusa de Ucrania. Polonia ha aprovechado esto para aumentar su influencia en la organización. ¿Conseguirá Polonia sustituir políticamente a Alemania, o seguirá relativamente irrelevante?", "Nada aún","Nada aún","Nada aún"];
             var images = ["image1.jpg", "image2.jpg", "image3.png", "image4.png"];
             var currentIndex = 0;
             var sliderImage = document.getElementById("sliderImage");
-            function revealText() {
-                var hiddenText = document.getElementsByClassName("hiddenText")[0];
-                hiddenText.classList.add("reveal");
+            var textElement = document.getElementById("text");
+            var buttonA = document.getElementById("buttonA");
+            var buttonB = document.getElementById("buttonB");
+
+            function fadeIn(element) {
+                element.style.opacity = 1;
+                element.style.transform = "translateY(0)";
             }
-            function previousImage() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
+
+            function fadeOut(element) {
+                element.style.opacity = 0;
+                element.style.transform = "translateY(-20px)";
+            }
+
+            function showText() {
+                fadeOut(textElement);
+                setTimeout(function() {
+                textElement.textContent = textArray[currentIndex];
+                fadeIn(textElement);
+                }, 500);
+            }
+
+            buttonA.addEventListener("click", function() {
+                currentIndex = (currentIndex === 0) ? textArray.length - 1 : currentIndex - 1;
                 sliderImage.src = images[currentIndex];
-            }
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % images.length;
+                showText();
+            });
+
+            buttonB.addEventListener("click", function() {
+                currentIndex = (currentIndex === textArray.length - 1) ? 0 : currentIndex + 1;
                 sliderImage.src = images[currentIndex];
-            }
+                showText();
+            });
+
+            window.addEventListener('load', function() {
+                var fadeContainers = document.querySelectorAll('.fade-container');
+                for (var i = 0; i < fadeContainers.length; i++) {
+                    fadeContainers[i].classList.add('fade-in');
+                }
+            });
         </script>
     </body>
 </html>
