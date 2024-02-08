@@ -16,21 +16,20 @@ html {
 }
 
 .image-container {
-    margin: 0; /* Ensure there is no margin */
+    margin: 0;
     width: 100%;
-    /* Define the aspect ratio by setting the padding-bottom as a percentage of the width */
-    padding-bottom: 5%; /* This gives a 4:3 aspect ratio (height is 75% of the width) */
+    padding-bottom: 5%;
     background-image: url("Sources/banner.png");
-    background-size: cover; /* Ensure the image covers the entire container */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     box-shadow: 1px 5px 10px #e36a11;
 }
 
 .circle-container {
     position: absolute;
-    width: 10%; /* Adjust the size of the circle as needed */
-    padding-bottom: 10%; /* Adjust the size of the circle as needed */
+    width: 10%;
+    padding-bottom: 10%;
     border-radius: 50%;
     background-image: url("Sources/icon.jpg");
     background-size: cover;
@@ -54,13 +53,38 @@ html {
 }
 
 .logo-image-container {
-    margin: 0; /* Ensure there is no margin */
+    margin: 0;
     width: 100%;
-    /* Define the aspect ratio by setting the padding-bottom as a percentage of the width */
-    padding-bottom: 5%; /* This gives a 4:3 aspect ratio (height is 75% of the width) */
+    padding-bottom: 5%;
     background-image: url("Sources/banner.png");
-    background-size: cover; /* Ensure the image covers the entire container */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     box-shadow: 1px 5px 10px #e36a11;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.custom-accordion {
+    width: 80%;
+    margin: 0 auto;
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    z-index: -2;
+}
+
+.accordion-body {
+    text-align: center;
 }
